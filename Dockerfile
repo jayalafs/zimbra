@@ -30,7 +30,7 @@ RUN apt-get update && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Copiar el script de inicialización al contenedor
-COPY ,/src/init.sh /usr/local/bin/init.sh
+COPY ./src/init.sh /usr/local/bin/init.sh
 RUN chmod +x /usr/local/bin/init.sh
 
 # Configurar hostname
