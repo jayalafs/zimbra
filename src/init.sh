@@ -19,8 +19,15 @@ addn-hosts=/etc/hosts
 cache-size=9500
 EOF
 
+# Parar y desactivar systemd-resolved
+service systemd-resolved stop
+systemctl disable systemd-resolved
+
 # Configurar /etc/resolv.conf
 echo "nameserver 127.0.0.1" > /etc/resolv.conf
+
+# Iniciar dnsmasq
+service dnsmasq start
 
 # Mantener el contenedor en ejecución
 sleep infinity

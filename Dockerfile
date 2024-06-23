@@ -30,17 +30,11 @@ RUN apt-get update && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Copiar el script de inicialización al contenedor
-COPY ./src/init.sh /usr/local/bin/init.sh
+COPY ,/src/init.sh /usr/local/bin/init.sh
 RUN chmod +x /usr/local/bin/init.sh
 
 # Configurar hostname
 RUN echo "solvet-it.com.py" > /etc/hostname
-
-# Desactivar systemd-resolved y activar dnsmasq
-RUN systemctl stop systemd-resolved.service && \
-    systemctl disable systemd-resolved.service && \
-    systemctl enable dnsmasq.service && \
-    systemctl start dnsmasq.service
 
 # Mantener el contenedor iniciado
 CMD ["/usr/local/bin/init.sh"]
