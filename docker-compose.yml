@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  php-apache:
+    container_name: app-zimbra
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    networks:
+      faveo-network:
+        ipv4_address: 172.25.2.1
+    ports:
+      - "8383:80"
+    volumes:
+      - app-volume:/var/www/
+    restart: always
+
+networks:
+  faveo-network:
+    name: zimbra-network
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.25.0.0/16
+
+volumes:
+  app-volume:
+    name: app-volume
+    driver: local
