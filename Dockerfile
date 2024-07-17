@@ -26,6 +26,7 @@ RUN apt-get update && \
     libaio1 \
     pax \
     dnsmasq \
+    openssh-client \
     net-tools && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
