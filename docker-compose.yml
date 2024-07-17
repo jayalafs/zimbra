@@ -21,7 +21,7 @@ services:
       - "636:636"
       - "7025:7025"
     volumes:
-      - app-volume:/var/www/
+      - zimbra-volume:/var/www/
     restart: always
 
 networks:
@@ -32,5 +32,5 @@ networks:
         - subnet: 172.25.0.0/16
 
 volumes:
-  app-volume:
+  zimbra-volume:
     driver: local
